@@ -332,6 +332,14 @@
                     stop();
                 }
                 save(xinm[num]);
+                if (sdj.length==8&&edj.length==0){
+                        layer.alert("该抽二等奖啦");
+                }else if (sdj.length==8&&edj.length==5&&ydj.length==0){
+                        layer.alert("该抽一等奖啦");
+                }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj==0){
+                    layer.alert("该抽特等奖啦");
+
+                }
             }
         });
         function save(name) {
@@ -399,6 +407,14 @@
             t = 0;
         }
     });
+    document.onkeydown = function()
+    {
+        if(event.keyCode==116) {
+            event.keyCode=0;
+            event.returnValue = false;
+        }
+    };
+    document.oncontextmenu = function() {event.returnValue = false;}
 </script>
 </body>
 </html>
