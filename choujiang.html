@@ -39,7 +39,11 @@
         }
         .workArea .h1text{
             margin-top: 8%;
-            margin-left: 10%;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bolder;
+            color: #FBFE16;
+            filter: glow(color=#f12526, strength=00);
         }
         .workArea .workDiv{
             margin-left: 10%;
@@ -65,18 +69,21 @@
             border-color: #ff1809;
             color: rgba(251, 254, 22, 0.84);
             font-size: 30px;
+            font-weight: bolder;
         }
         .button-now:visited,
         .button-now-flat:visited {
             color: #f12526;
-            font-size: 30px;}
+            font-size: 30px;
+            font-weight: bolder;}
         .button-now:hover, .button-now:focus,
         .button-now-flat:hover,
         .button-now-flat:focus {
             background-color: rgba(241, 37, 38, 0.47);
             border-color: #ff7680;
             color: #fbfe16;
-            font-size: 30px;}
+            font-size: 30px;
+            font-weight: bolder;}
         .button-now:active, .button-now.active, .button-now.is-active,
         .button-now-flat:active,
         .button-now-flat.active,
@@ -112,7 +119,7 @@
 <div class="main-container">
     <div class="main clearfix">
             <div  class="workArea">
-                <h1 class="h1text" id="tips">三等奖得主：</h1>
+                <h1 class="h1text" id="tips">三等奖得主</h1>
                 <div  class="workDiv">
                    <p id="name"></p>
                     </div>
@@ -290,41 +297,40 @@
         var pcount = xinm.length-1;//参加人数
         var mp3 =$("#audio")[0];
         var runing=true;
+        var num = 0;
         $('#start').click(function () {
             if(tdj.length==1){
                 layer.alert("大奖抽完啦，明年再来吧");
                 return false;
             }
+            if (sdj.length==8&&edj.length==0){
+                $("#tips").html("二等奖得主");
+                $("#nameList li").remove();
+            }else if (sdj.length==8&&edj.length==5&&ydj.length==0){
+                $("#tips").html("一等奖得主");
+                $("#nameList li").remove();
+            }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj==0){
+                $("#tips").html("特等奖得主");
+                $("#nameList li").remove();
+            }
             if (runing) {
                 runing = false;
                 $(this).removeClass('button-now').addClass('button-caution');
                 $(this).html('停止');
-
-               if(sdj.length<8){
-                    startNum();
-                }else if (sdj.length==8&&edj.length<5){
-                    $("#tips").html("二等奖得主：");
-                    startNum();
-                }else if (sdj.length==8&&edj.length==5&&ydj.length<3){
-                    $("#tips").html("一等奖得主：");
-                    startNum();
-                }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
-                    $("#tips").html("特等奖得主：");
+                if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
                     startNumT();
+                }else {
+                    startNum();
                 }
-
-
             } else {
                 runing = true;
                 $(this).removeClass('button-caution').addClass('button-now');
                 $(this).html('开始');
-
                 if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
                     stopT();
                 }else {
                     stop();
                 }
-
                 save(xinm[num]);
             }
         });
@@ -339,13 +345,13 @@
                 $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }else if (sdj.length==8&&edj.length<5){
                 edj.push(name);
-                $("#nameList").append("<li style='color: #fbfe16'>"+name+"</li>")
+                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }else if (sdj.length==8&&edj.length==5&&ydj.length<3){
                 ydj.push(name);
-                $("#nameList").append("<li style='color: #45fe06'>"+name+"</li>")
+                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
                 tdj.push(name);
-                $("#nameList").append("<li style='color: #1552f1'>"+name+"</li>")
+                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }
 
         }
