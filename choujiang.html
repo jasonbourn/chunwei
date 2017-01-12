@@ -1,0 +1,398 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <!--  <link rel="stylesheet" href="css/main.css">-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <style>
+        body {
+            background-image: url(a.jpg);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+        }
+        .main aside {
+            float: right;
+            width: 20%;
+            margin-right: 50px;
+        }
+        .main .workArea{
+            float: left;
+            width: 65%;
+        }
+        .workArea .h1text{
+            margin-top: 8%;
+            margin-left: 10%;
+        }
+        .workArea .workDiv{
+            margin-left: 10%;
+            width: 85%;
+            height: 200px;
+            background-color: rgba(251, 254, 22, 0.34);
+            border: rgba(241, 37, 38, 0.99);
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .button-now{
+            margin-top: 10px;
+            margin-left: 45%;
+        }
+        .button-caution{
+            margin-top: 10px;
+            margin-left: 45%;
+            font-size: 30px;
+        }
+        .button-now,
+        .button-now-flat {
+            background-color: #f16529;
+            border-color: #ff1809;
+            color: rgba(251, 254, 22, 0.84);
+            font-size: 30px;
+        }
+        .button-now:visited,
+        .button-now-flat:visited {
+            color: #f12526;
+            font-size: 30px;}
+        .button-now:hover, .button-now:focus,
+        .button-now-flat:hover,
+        .button-now-flat:focus {
+            background-color: rgba(241, 37, 38, 0.47);
+            border-color: #ff7680;
+            color: #fbfe16;
+            font-size: 30px;}
+        .button-now:active, .button-now.active, .button-now.is-active,
+        .button-now-flat:active,
+        .button-now-flat.active,
+        .button-now-flat.is-active {
+            background-color: #f64c59;
+            border-color: #f64c59;
+            color: #fbfe16; }
+        .workArea p {
+            padding-top:10px ;
+            font-size: 3.2em;
+            text-align: center;
+            color: #000000;
+            filter: glow(color=#ffff00, strength=00)
+        }
+        .ulc{
+            position: relative;
+            width: 350px;
+        }
+        li{
+            font-size: 20px;
+        }
+    </style>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+</head>
+<body>
+<div class="header-container">
+    <header class="wrapper clearfix">
+        <h1 class="title">春闱科技年会抽奖</h1>
+    </header>
+</div>
+<canvas id="canvas" style="position:absolute;z-index:-1">Canvas is not supported in your browser.</canvas>
+<div class="main-container">
+    <div class="main clearfix">
+            <div  class="workArea">
+                <h1 class="h1text" id="tips">三等奖得主：</h1>
+                <div  class="workDiv">
+                   <p id="name"></p>
+                    </div>
+                <div>
+                    <button id="start" class="button button-now  button-pill button-jumbo" style="">开始</button>
+                </div>
+            </div>
+        <aside>
+            <h3>中奖名单</h3>
+            <ol id="nameList" class="ulc">
+
+            </ol>
+        </aside>
+        <audio id="audio" controls="controls" style="display: none">
+            <source src="bjy.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    </div> <!-- #main -->
+</div> <!-- #main-container -->
+
+<script src="js/vendor/jquery-1.11.2.min.js"></script>
+
+<script src="js/main.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="js/canvas.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    $(function () {
+        var xinm = new Array();
+        xinm[1] = "李明文总经办13311290296";
+        xinm[2] = "金涛总经办13910168026";
+        xinm[3] = "程建军总经办18601126619";
+        xinm[4] = "郭海滨总经办13701187599";
+        xinm[5] = "高磊总经办13220101989";
+        xinm[6] = "楚晓华总经办18500299299";
+        xinm[7] = "林小军总经办18123288035";
+        xinm[8] = "谢兆林总经办13518196888";
+        xinm[9] = "冉亮总经办13681126734";
+        xinm[10] = "梁景青财务部15611850493";
+        xinm[11] = "何彤财务部13701282673";
+        xinm[12] = "张京虹财务部13671223921";
+        xinm[13] = "阮兆晨财务部13699290327";
+        xinm[14] = "郑敏财务部15810721236";
+        xinm[15] = "赵迪娜人力资源行政部13910693260";
+        xinm[16] = "王婷人力资源行政部15011588086";
+        xinm[17] = "张二苗人力资源行政部13691514053";
+        xinm[18] = "彭晓燕人力资源行政部13466573709";
+        xinm[19] = "康  蕾人力资源行政部15901280700";
+        xinm[20] = "马珺医政部13501192371";
+        xinm[21] = "梁巍然医政部15521186810";
+        xinm[22] = "许旸市场部13911770989";
+        xinm[23] = "王安好市场部15810721810";
+        xinm[24] = "邱钦梅市场部17710307992";
+        xinm[25] = "温銮市场部13536679042";
+        xinm[26] = "王欢市场部15378664933";
+        xinm[27] = "王子豪运营部18600005672";
+        xinm[28] = "徐敏运营部17710637758";
+        xinm[29] = "李文宇运营部18601296524";
+        xinm[30] = "何音璇运营部18310138069";
+        xinm[31] = "马立改运营部18801496199";
+        xinm[32] = "伍廷超运营部18910659337";
+        xinm[33] = "吕峰运营部15801673933";
+        xinm[34] = "李瑛运营部18911773480";
+        xinm[35] = "吕鑫硬件部18618425486";
+        xinm[36] = "程俊硬件部18310121700";
+        xinm[37] = "赵晓林硬件部18612138362";
+        xinm[38] = "刘明龙硬件部18612138362";
+        xinm[39] = "耿彩霞硬件部18600661665";
+        xinm[40] = "刘飞硬件部13240250271";
+        xinm[41] = "徐宁硬件部15832573617";
+        xinm[42] = "迟卫新技术支持部13661285623";
+        xinm[43] = "王意技术支持部13810963381";
+        xinm[44] = "高琦技术支持部13488834664";
+        xinm[45] = "郑云畅技术支持部18210195501";
+        xinm[46] = "田乐技术支持部13693580862";
+        xinm[47] = "范兰英技术支持部15164800165";
+        xinm[48] = "籍磊技术支持部15810395781";
+        xinm[49] = "张晓梅技术支持部13041099455";
+        xinm[50] = "李明刚产品研发部13311298286";
+        xinm[51] = "李召慧产品研发部18439800409";
+        xinm[52] = "武亮产品研发部15910309851";
+        xinm[53] = "张锴产品研发部18611517372";
+        xinm[54] = "靳利强产品研发部18722457930";
+        xinm[55] = "王春玺产品研发部15522571815";
+        xinm[56] = "秦领产品研发部15810430872";
+        xinm[57] = "翟康宁产品研发部18500359581";
+        xinm[58] = "朱育刚产品研发部17310080730";
+        xinm[59] = "黄文奎产品研发部15600800591";
+        xinm[60] = "魏绍玺产品研发部13552190221";
+        xinm[61] = "赵娜产品研发部18518257268";
+        xinm[62] = "李岩产品研发部18633265431";
+        xinm[63] = "陈玲玲产品研发部18518677753";
+        xinm[64] = "王小雨销售部13581863287";
+        xinm[65] = "肖传宏销售部15215314141";
+        xinm[66] = "郑福顺销售部13942651002";
+        xinm[67] = "王博销售部15102201055";
+        xinm[68] = "杨淼森销售部13572588425";
+        xinm[69] = "冯宣军销售部18628261707";
+        xinm[70] = "吴柯森销售部13546728753";
+        xinm[71] = "易冬销售部15962340177";
+        xinm[72] = "李连省销售部13405758396";
+        xinm[73] = "汤周易销售部18602769670";
+        xinm[74] = "谢锡秋销售部13828418950";
+        xinm[75] = "陈云捷销售部18925013883";
+        xinm[76] = "翁铭图销售部13794608339";
+        xinm[77] = "翁庸韩销售部13556444944";
+        xinm[78] = "聂剑辉销售部18618413230";
+        xinm[79] = "杨文雪销售部13683595653";
+        xinm[80] = "徐璐璐销售部13641111163";
+        xinm[81] = "董正红销售部13356681936";
+        xinm[82] = "李金霞销售部13173281588";
+        xinm[83] = "庄绪榕销售部18806321128";
+        xinm[84] = "牛国华销售部13731124055";
+        xinm[85] = "牛晓娜销售部15981889301";
+        xinm[86] = "董霞销售部15008497475";
+        xinm[87] = "钟双销售部18623396688";
+        xinm[88] = "方伟娟销售部13771931814";
+        xinm[89] = "邓宁凤销售部13357826619";
+        xinm[90] = "李华梅销售部18505291727";
+        xinm[91] = "孔利群销售部13588863117";
+        xinm[92] = "李瑞霞销售部15359899733";
+        xinm[93] = "周果销售部13787240727";
+        xinm[94] = "许晓静销售部13817917445";
+        xinm[95] = "曹美红销售部15915701327";
+        xinm[96] = "侯铭销售部15989378271";
+        xinm[97] = "韦东云销售部13597395002";
+        xinm[98] = "袁海英销售部13681152968";
+        xinm[99] = "徐真销售部13241766583";
+        xinm[100] = "王晓慧销售部18518296001";
+        xinm[101] = "刘呈波销售部13701083857";
+        xinm[102] = "庞湘云销售部18602022599";
+        xinm[103] = "石多娇销售部15053375518";
+        xinm[104] = "倪佳丽销售部18580796303";
+        xinm[105] = "邢华贞销售部13915561079";
+        xinm[106] = "周建茹销售部13303169896";
+        xinm[107] = "孙鸿燕销售部18623772519";
+        xinm[108] = "齐芳客服部13693247078";
+        xinm[109] = "张玲玲客服部18101050618";
+        xinm[110] = "于美玲客服部17701359997";
+        xinm[111] = "魏媛媛客服部18618257758";
+        xinm[112] = "李月客服部13522513930";
+        xinm[113] = "马丽华客服部13241735257";
+        xinm[114] = "李盛桐客服部18701180498";
+        xinm[115] = "王玲客服部13801358815";
+        xinm[116] = "梅凤君客服部15101664633";
+        xinm[117] = "段娜娜客服部18210238194";
+        xinm[118] = "冯雪莲客服部13681039885";
+        xinm[119] = "王然客服部18210257731";
+        xinm[120] = "武文莉客服部18911731302";
+        xinm[121] = "严胜芳客服部13701139881";
+        xinm[122] = "高莆客服部13391858909";
+        xinm[123] = "邱爽客服部18301658611";
+        xinm[124] = "史晓宇客服部13172127001";
+        xinm[125] = "陶立新客服部13552317557";
+        xinm[126] = "崔维芳客服部15510684518";
+        xinm[127] = "王玉梅客服部13641359830";
+        xinm[128] = "曹丽娜客服部18511266246";
+        xinm[129] = "王志萍客服部13269563266";
+        xinm[130] = "陈秀客服部13561352528";
+        xinm[131] = "何俊客服部13926406667";
+        xinm[132] = "韦金玉客服部13667831152";
+        xinm[133] = "黄瀚峤客服部13512347595";
+        xinm[134] = "向淑晶客服部15069758723";
+        xinm[135] = "任健中钰13716323667";
+        xinm[136] = "周慧君益基15010063688";
+        xinm[137] = "黄齐益基18007177697";
+        xinm[138] = "江秀坤安蒂康13608082258";
+        var notTdj = ['郑敏财务部15810721236', '赵迪娜人力资源行政部13910693260', '张二苗人力资源行政部13691514053', '徐敏运营部17710637758', '伍廷超运营部18910659337', '李瑛运营部18911773480', '张晓梅技术支持部13041099455', '赵娜产品研发部18518257268', '陈玲玲产品研发部18518677753', '钟双销售部18623396688', '孙鸿燕销售部18623772519', '王然客服部18210257731'];
+        var tdj=new Array();//特等奖名单
+        var ydj=new Array();//一等奖名单
+        var edj=new Array();//二等奖名单
+        var sdj=new Array();//三等奖名单
+        var nametxt = $('#name');
+        var pcount = xinm.length-1;//参加人数
+        var mp3 =$("#audio")[0];
+        var runing=true;
+        $('#start').click(function () {
+            if(tdj.length==1){
+                layer.alert("大奖抽完啦，明年再来吧");
+                return false;
+            }
+            if (runing) {
+                runing = false;
+                $(this).removeClass('button-now').addClass('button-caution');
+                $(this).html('停止');
+
+               if(sdj.length<8){
+                    startNum();
+                }else if (sdj.length==8&&edj.length<5){
+                    $("#tips").html("二等奖得主：");
+                    startNum();
+                }else if (sdj.length==8&&edj.length==5&&ydj.length<3){
+                    $("#tips").html("一等奖得主：");
+                    startNum();
+                }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
+                    $("#tips").html("特等奖得主：");
+                    startNumT();
+                }
+
+
+            } else {
+                runing = true;
+                $(this).removeClass('button-caution').addClass('button-now');
+                $(this).html('开始');
+
+                if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
+                    stopT();
+                }else {
+                    stop();
+                }
+
+                save(xinm[num]);
+            }
+        });
+        function save(name) {
+            var removeItem =name;
+            xinm = $.grep(xinm, function(value) {
+                return value != removeItem;
+            });
+            localStorage.setItem("tdj",tdj);
+            if(sdj.length<8){
+                sdj.push(name);
+                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
+            }else if (sdj.length==8&&edj.length<5){
+                edj.push(name);
+                $("#nameList").append("<li style='color: #fbfe16'>"+name+"</li>")
+            }else if (sdj.length==8&&edj.length==5&&ydj.length<3){
+                ydj.push(name);
+                $("#nameList").append("<li style='color: #45fe06'>"+name+"</li>")
+            }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
+                tdj.push(name);
+                $("#nameList").append("<li style='color: #f12526'>"+name+"</li>")
+            }
+
+        }
+        Array.prototype.in_array = function(e)
+        {
+            for(i=0;i<this.length;i++)
+            {
+                if(this[i] == e)
+                    return true;
+            }
+            return false;
+        };
+        function startNumT() {
+            mp3.play();
+            num =randomNum();
+            nametxt.html(xinm[num]);
+            m=setTimeout(startNumT,0);
+        }
+        function randomNum() {
+            var k = Math.floor(Math.random() * pcount);
+            if(notTdj.in_array(xinm[k])){
+               return randomNum();
+            }else {
+                return k;
+            }
+
+        }
+        function stopT() {
+            mp3.pause();
+            pcount = xinm.length-1;
+            clearInterval(m);
+        }
+//循环参加名单
+        function startNum() {
+            mp3.play();
+            num = Math.floor(Math.random() * pcount);
+            nametxt.html(xinm[num]);
+            t = setTimeout(startNum, 0);
+        }
+//停止跳动
+        function stop() {
+            mp3.pause();
+            pcount = xinm.length-1;
+            clearInterval(t);
+            t = 0;
+        }
+    });
+</script>
+</body>
+</html>
