@@ -3,6 +3,7 @@
 html {
     color: #222;
     font-size: 1em;
+    font-family: 微软雅黑;
     line-height: 1.4;
 }
 
@@ -56,10 +57,6 @@ textarea {
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
 
-body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
-}
-
 .wrapper {
     width: 90%;
     margin: 0 5%;
@@ -75,13 +72,13 @@ body {
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+
 }
 
 .title {
