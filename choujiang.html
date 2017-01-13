@@ -28,19 +28,25 @@
             -moz-background-size: cover;
             -webkit-background-size: cover;
         }
-        .main aside {
-            float: right;
-            width: 20%;
-            margin-right: 50px;
-        }
+
         .main .workArea{
             float: left;
             width: 65%;
         }
+        .main .divList{
+            float: left;
+            width: 35%;
+            margin-top: 40px;
+            color: #FBFE16;;
+        }
+        .divList h1{
+            margin-left: 40px;
+            text-align: left;
+        }
         .workArea .h1text{
-            margin-top: 8%;
+            margin-left: 30px;
             text-align: center;
-            font-size: 80px;
+            font-size: 70px;
             font-weight: bolder;
             color: #FBFE16;
             filter: glow(color=#f12526, strength=00);
@@ -55,35 +61,33 @@
             padding: 20px;
         }
         .button-now{
-            margin-top: 10px;
-            margin-left: 45%;
+            margin-top: 20px;
         }
         .button-caution{
-            margin-top: 10px;
-            margin-left: 45%;
-            font-size: 30px;
+            margin-top: 20px;
+            font-size: 50px;
         }
         .button-now,
         .button-now-flat {
             background-color: #f16529;
             border-color: #ff1809;
             color: rgba(251, 254, 22, 0.84);
-            font-size: 30px;
-            font-weight: bolder;
+            font-size: 50px;
+            font-weight: 900;
         }
         .button-now:visited,
         .button-now-flat:visited {
             color: #f12526;
-            font-size: 30px;
-            font-weight: bolder;}
+            font-size: 50px;
+            font-weight: 900;}
         .button-now:hover, .button-now:focus,
         .button-now-flat:hover,
         .button-now-flat:focus {
             background-color: rgba(241, 37, 38, 0.47);
             border-color: #ff7680;
             color: #fbfe16;
-            font-size: 30px;
-            font-weight: bolder;}
+            font-size: 50px;
+            font-weight: 900;}
         .button-now:active, .button-now.active, .button-now.is-active,
         .button-now-flat:active,
         .button-now-flat.active,
@@ -91,19 +95,20 @@
             background-color: #f64c59;
             border-color: #f64c59;
             color: #fbfe16; }
-        .workArea p {
-            padding-top:10px ;
-            font-size: 3.2em;
+        .workArea div {
+            font-size: 1.95em;
             text-align: center;
             color: #000000;
-            filter: glow(color=#ffff00, strength=00)
         }
         .ulc{
             position: relative;
+            margin-left: 20px;
+            text-align: left;
             width: 350px;
         }
         li{
-            font-size: 24px;
+            font-size: 20px;
+            padding: 10px 0px;
         }
     </style>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -112,22 +117,23 @@
 <body>
 <canvas id="canvas" style="position:absolute;z-index:-1">Canvas is not supported in your browser.</canvas>
 <div class="main-container">
-    <div class="main clearfix">
+    <div class="main">
             <div  class="workArea">
-                <h1 class="h1text" id="tips">三等奖得主</h1>
+                <h1 class="h1text" id="tips">三等奖获得者</h1>
                 <div  class="workDiv">
-                   <p id="name"></p>
-                    </div>
+                   <div id="name"></div>
+                    <div id="mobile1"></div>
+                </div>
                 <div>
-                    <button id="start" class="button button-now  button-pill button-jumbo" style="">开始</button>
+                    <button id="start" class="button button-now  button-pill button-jumbo">开始</button>
                 </div>
             </div>
-        <aside>
+        <div class="divList">
             <h1>中奖名单</h1>
             <ol id="nameList" class="ulc">
 
             </ol>
-        </aside>
+        </div>
         <audio id="audio" controls="controls" style="display: none">
             <source src="bjy.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
@@ -145,150 +151,290 @@
 <script>
     $(function () {
         var xinm = new Array();
-        xinm[0] = "李明文总经办13311290296";
-        xinm[1] = "金涛总经办13910168026";
-        xinm[2] = "程建军总经办18601126619";
-        xinm[3] = "郭海滨总经办13701187599";
-        xinm[4] = "高磊总经办13220101989";
-        xinm[5] = "楚晓华总经办18500299299";
-        xinm[6] = "林小军总经办18123288035";
-        xinm[7] = "谢兆林总经办13518196888";
-        xinm[8] = "冉亮总经办13681126734";
-        xinm[9] = "梁景青财务部15611850493";
-        xinm[10] = "何彤财务部13701282673";
-        xinm[11] = "张京虹财务部13671223921";
-        xinm[12] = "阮兆晨财务部13699290327";
-        xinm[13] = "郑敏财务部15810721236";
-        xinm[14] = "赵迪娜人力资源13910693260";
-        xinm[15] = "王婷人力资源15011588086";
-        xinm[16] = "张二苗人力资源13691514053";
-        xinm[17] = "彭晓燕人力资源13466573709";
-        xinm[18] = "康  蕾人力资源15901280700";
-        xinm[19] = "马珺医政部13501192371";
-        xinm[20] = "梁巍然医政部15521186810";
-        xinm[21] = "许旸市场部13911770989";
-        xinm[22] = "王安好市场部15810721810";
-        xinm[23] = "邱钦梅市场部17710307992";
-        xinm[24] = "温銮市场部13536679042";
-        xinm[25] = "王欢市场部15378664933";
-        xinm[26] = "王子豪运营部18600005672";
-        xinm[27] = "徐敏运营部17710637758";
-        xinm[28] = "李文宇运营部18601296524";
-        xinm[29] = "何音璇运营部18310138069";
-        xinm[30] = "马立改运营部18801496199";
-        xinm[31] = "伍廷超运营部18910659337";
-        xinm[32] = "吕峰运营部15801673933";
-        xinm[33] = "李瑛运营部18911773480";
-        xinm[34] = "吕鑫硬件部18618425486";
-        xinm[35] = "程俊硬件部18310121700";
-        xinm[36] = "赵晓林硬件部18612138362";
-        xinm[37] = "刘明龙硬件部18612138362";
-        xinm[38] = "耿彩霞硬件部18600661665";
-        xinm[39] = "刘飞硬件部13240250271";
-        xinm[40] = "徐宁硬件部15832573617";
-        xinm[41] = "迟卫新技术支持部13661285623";
-        xinm[42] = "王意技术支持部13810963381";
-        xinm[43] = "高琦技术支持部13488834664";
-        xinm[44] = "郑云畅技术支持部18210195501";
-        xinm[45] = "田乐技术支持部13693580862";
-        xinm[46] = "范兰英技术支持部15164800165";
-        xinm[47] = "籍磊技术支持部15810395781";
-        xinm[48] = "张晓梅技术支持部13041099455";
-        xinm[49] = "李明刚产品研发部13311298286";
-        xinm[50] = "李召慧产品研发部18439800409";
-        xinm[51] = "武亮产品研发部15910309851";
-        xinm[52] = "张锴产品研发部18611517372";
-        xinm[53] = "靳利强产品研发部18722457930";
-        xinm[54] = "王春玺产品研发部15522571815";
-        xinm[55] = "秦领产品研发部15810430872";
-        xinm[56] = "翟康宁产品研发部18500359581";
-        xinm[57] = "朱育刚产品研发部17310080730";
-        xinm[58] = "黄文奎产品研发部15600800591";
-        xinm[59] = "魏绍玺产品研发部13552190221";
-        xinm[60] = "赵娜产品研发部18518257268";
-        xinm[61] = "李岩产品研发部18633265431";
-        xinm[62] = "陈玲玲产品研发部18518677753";
-        xinm[63] = "王小雨销售部13581863287";
-        xinm[64] = "肖传宏销售部15215314141";
-        xinm[65] = "郑福顺销售部13942651002";
-        xinm[66] = "王博销售部15102201055";
-        xinm[67] = "杨淼森销售部13572588425";
-        xinm[68] = "冯宣军销售部18628261707";
-        xinm[69] = "吴柯森销售部13546728753";
-        xinm[70] = "易冬销售部15962340177";
-        xinm[71] = "李连省销售部13405758396";
-        xinm[72] = "汤周易销售部18602769670";
-        xinm[73] = "谢锡秋销售部13828418950";
-        xinm[74] = "陈云捷销售部18925013883";
-        xinm[75] = "翁铭图销售部13794608339";
-        xinm[76] = "翁庸韩销售部13556444944";
-        xinm[77] = "聂剑辉销售部18618413230";
-        xinm[78] = "杨文雪销售部13683595653";
-        xinm[79] = "徐璐璐销售部13641111163";
-        xinm[80] = "董正红销售部13356681936";
-        xinm[81] = "李金霞销售部13173281588";
-        xinm[82] = "庄绪榕销售部18806321128";
-        xinm[83] = "牛国华销售部13731124055";
-        xinm[84] = "牛晓娜销售部15981889301";
-        xinm[85] = "董霞销售部15008497475";
-        xinm[86] = "钟双销售部18623396688";
-        xinm[87] = "方伟娟销售部13771931814";
-        xinm[88] = "邓宁凤销售部13357826619";
-        xinm[89] = "李华梅销售部18505291727";
-        xinm[90] = "孔利群销售部13588863117";
-        xinm[91] = "李瑞霞销售部15359899733";
-        xinm[92] = "周果销售部13787240727";
-        xinm[93] = "许晓静销售部13817917445";
-        xinm[94] = "曹美红销售部15915701327";
-        xinm[95] = "侯铭销售部15989378271";
-        xinm[96] = "韦东云销售部13597395002";
-        xinm[97] = "袁海英销售部13681152968";
-        xinm[98] = "徐真销售部13241766583";
-        xinm[99] = "王晓慧销售部18518296001";
-        xinm[100] = "刘呈波销售部13701083857";
-        xinm[101] = "庞湘云销售部18602022599";
-        xinm[102] = "石多娇销售部15053375518";
-        xinm[103] = "倪佳丽销售部18580796303";
-        xinm[104] = "邢华贞销售部13915561079";
-        xinm[105] = "周建茹销售部13303169896";
-        xinm[106] = "孙鸿燕销售部18623772519";
-        xinm[107] = "齐芳客服部13693247078";
-        xinm[108] = "张玲玲客服部18101050618";
-        xinm[109] = "于美玲客服部17701359997";
-        xinm[110] = "魏媛媛客服部18618257758";
-        xinm[111] = "李月客服部13522513930";
-        xinm[112] = "马丽华客服部13241735257";
-        xinm[113] = "李盛桐客服部18701180498";
-        xinm[114] = "王玲客服部13801358815";
-        xinm[115] = "梅凤君客服部15101664633";
-        xinm[116] = "段娜娜客服部18210238194";
-        xinm[117] = "冯雪莲客服部13681039885";
-        xinm[118] = "王然客服部18210257731";
-        xinm[119] = "武文莉客服部18911731302";
-        xinm[120] = "严胜芳客服部13701139881";
-        xinm[121] = "高莆客服部13391858909";
-        xinm[122] = "邱爽客服部18301658611";
-        xinm[123] = "史晓宇客服部13172127001";
-        xinm[124] = "陶立新客服部13552317557";
-        xinm[125] = "崔维芳客服部15510684518";
-        xinm[126] = "王玉梅客服部13641359830";
-        xinm[127] = "曹丽娜客服部18511266246";
-        xinm[128] = "王志萍客服部13269563266";
-        xinm[129] = "陈秀客服部13561352528";
-        xinm[130] = "何俊客服部13926406667";
-        xinm[131] = "韦金玉客服部13667831152";
-        xinm[132] = "黄瀚峤客服部13512347595";
-        xinm[133] = "向淑晶客服部15069758723";
-        xinm[134] = "任健中钰13716323667";
-        xinm[135] = "周慧君益基15010063688";
-        xinm[136] = "黄齐益基18007177697";
-        xinm[137] = "江秀坤安蒂康13608082258";
-        var notTdj = ['郑敏财务部15810721236', '赵迪娜人力资源13910693260', '张二苗人力资源13691514053', '徐敏运营部17710637758', '伍廷超运营部18910659337', '李瑛运营部18911773480', '张晓梅技术支持部13041099455', '赵娜产品研发部18518257268', '陈玲玲产品研发部18518677753', '钟双销售部18623396688', '孙鸿燕销售部18623772519', '王然客服部18210257731'];
+        xinm[0]="总经办&nbsp;&nbsp;李明文";
+        xinm[1]="总经办&nbsp;&nbsp;金涛";
+        xinm[2]="总经办&nbsp;&nbsp;程建军";
+        xinm[3]="总经办&nbsp;&nbsp;郭海滨";
+        xinm[4]="总经办&nbsp;&nbsp;高磊";
+        xinm[5]="总经办&nbsp;&nbsp;楚晓华";
+        xinm[6]="总经办&nbsp;&nbsp;林小军";
+        xinm[7]="总经办&nbsp;&nbsp;谢兆林";
+        xinm[8]="总经办&nbsp;&nbsp;冉亮";
+        xinm[9]="财务部&nbsp;&nbsp;梁景青";
+        xinm[10]="财务部&nbsp;&nbsp;何彤";
+        xinm[11]="财务部&nbsp;&nbsp;张京虹";
+        xinm[12]="财务部&nbsp;&nbsp;阮兆晨";
+        xinm[13]="财务部&nbsp;&nbsp;郑敏";
+        xinm[14]="人力资源行政部&nbsp;&nbsp;赵迪娜";
+        xinm[15]="人力资源行政部&nbsp;&nbsp;王婷";
+        xinm[16]="人力资源行政部&nbsp;&nbsp;张二苗";
+        xinm[17]="人力资源行政部&nbsp;&nbsp;彭晓燕";
+        xinm[18]="人力资源行政部&nbsp;&nbsp;康蕾";
+        xinm[19]="医政部&nbsp;&nbsp;马珺";
+        xinm[20]="医政部&nbsp;&nbsp;梁巍然";
+        xinm[21]="市场部&nbsp;&nbsp;许旸";
+        xinm[22]="市场部&nbsp;&nbsp;王安好";
+        xinm[23]="市场部&nbsp;&nbsp;邱钦梅";
+        xinm[24]="市场部&nbsp;&nbsp;温銮";
+        xinm[25]="市场部&nbsp;&nbsp;王欢";
+        xinm[26]="运营部&nbsp;&nbsp;王子豪";
+        xinm[27]="运营部&nbsp;&nbsp;徐敏";
+        xinm[28]="运营部&nbsp;&nbsp;李文宇";
+        xinm[29]="运营部&nbsp;&nbsp;何音璇";
+        xinm[30]="运营部&nbsp;&nbsp;马立改";
+        xinm[31]="运营部&nbsp;&nbsp;伍廷超";
+        xinm[32]="运营部&nbsp;&nbsp;吕峰";
+        xinm[33]="运营部&nbsp;&nbsp;李瑛";
+        xinm[34]="硬件部&nbsp;&nbsp;吕鑫";
+        xinm[35]="硬件部&nbsp;&nbsp;程俊";
+        xinm[36]="硬件部&nbsp;&nbsp;赵晓林";
+        xinm[37]="硬件部&nbsp;&nbsp;刘明龙";
+        xinm[38]="硬件部&nbsp;&nbsp;耿彩霞";
+        xinm[39]="硬件部&nbsp;&nbsp;刘飞";
+        xinm[40]="硬件部&nbsp;&nbsp;徐宁";
+        xinm[41]="技术支持部&nbsp;&nbsp;迟卫新";
+        xinm[42]="技术支持部&nbsp;&nbsp;王意";
+        xinm[43]="技术支持部&nbsp;&nbsp;高琦";
+        xinm[44]="技术支持部&nbsp;&nbsp;郑云畅";
+        xinm[45]="技术支持部&nbsp;&nbsp;田乐";
+        xinm[46]="技术支持部&nbsp;&nbsp;范兰英";
+        xinm[47]="技术支持部&nbsp;&nbsp;籍磊";
+        xinm[48]="技术支持部&nbsp;&nbsp;张晓梅";
+        xinm[49]="产品研发部&nbsp;&nbsp;李明刚";
+        xinm[50]="产品研发部&nbsp;&nbsp;李召慧";
+        xinm[51]="产品研发部&nbsp;&nbsp;武亮";
+        xinm[52]="产品研发部&nbsp;&nbsp;张锴";
+        xinm[53]="产品研发部&nbsp;&nbsp;靳利强";
+        xinm[54]="产品研发部&nbsp;&nbsp;王春玺";
+        xinm[55]="产品研发部&nbsp;&nbsp;秦领";
+        xinm[56]="产品研发部&nbsp;&nbsp;翟康宁";
+        xinm[57]="产品研发部&nbsp;&nbsp;朱育刚";
+        xinm[58]="产品研发部&nbsp;&nbsp;黄文奎";
+        xinm[59]="产品研发部&nbsp;&nbsp;魏绍玺";
+        xinm[60]="产品研发部&nbsp;&nbsp;赵娜";
+        xinm[61]="产品研发部&nbsp;&nbsp;李岩";
+        xinm[62]="产品研发部&nbsp;&nbsp;陈玲玲";
+        xinm[63]="销售部&nbsp;&nbsp;王小雨";
+        xinm[64]="销售部&nbsp;&nbsp;肖传宏";
+        xinm[65]="销售部&nbsp;&nbsp;郑福顺";
+        xinm[66]="销售部&nbsp;&nbsp;王博";
+        xinm[67]="销售部&nbsp;&nbsp;杨淼森";
+        xinm[68]="销售部&nbsp;&nbsp;冯宣军";
+        xinm[69]="销售部&nbsp;&nbsp;吴柯森";
+        xinm[70]="销售部&nbsp;&nbsp;易冬";
+        xinm[71]="销售部&nbsp;&nbsp;李连省";
+        xinm[72]="销售部&nbsp;&nbsp;汤周易";
+        xinm[73]="销售部&nbsp;&nbsp;谢锡秋";
+        xinm[74]="销售部&nbsp;&nbsp;陈云捷";
+        xinm[75]="销售部&nbsp;&nbsp;翁铭图";
+        xinm[76]="销售部&nbsp;&nbsp;翁庸韩";
+        xinm[77]="销售部&nbsp;&nbsp;聂剑辉";
+        xinm[78]="销售部&nbsp;&nbsp;杨文雪";
+        xinm[79]="销售部&nbsp;&nbsp;徐璐璐";
+        xinm[80]="销售部&nbsp;&nbsp;董正红";
+        xinm[81]="销售部&nbsp;&nbsp;李金霞";
+        xinm[82]="销售部&nbsp;&nbsp;庄绪榕";
+        xinm[83]="销售部&nbsp;&nbsp;牛国华";
+        xinm[84]="销售部&nbsp;&nbsp;牛晓娜";
+        xinm[85]="销售部&nbsp;&nbsp;董霞";
+        xinm[86]="销售部&nbsp;&nbsp;钟双";
+        xinm[87]="销售部&nbsp;&nbsp;方伟娟";
+        xinm[88]="销售部&nbsp;&nbsp;邓宁凤";
+        xinm[89]="销售部&nbsp;&nbsp;李华梅";
+        xinm[90]="销售部&nbsp;&nbsp;孔利群";
+        xinm[91]="销售部&nbsp;&nbsp;李瑞霞";
+        xinm[92]="销售部&nbsp;&nbsp;周果";
+        xinm[93]="销售部&nbsp;&nbsp;许晓静";
+        xinm[94]="销售部&nbsp;&nbsp;曹美红";
+        xinm[95]="销售部&nbsp;&nbsp;侯铭";
+        xinm[96]="销售部&nbsp;&nbsp;韦东云";
+        xinm[97]="销售部&nbsp;&nbsp;袁海英";
+        xinm[98]="销售部&nbsp;&nbsp;徐真";
+        xinm[99]="销售部&nbsp;&nbsp;王晓慧";
+        xinm[100]="销售部&nbsp;&nbsp;刘呈波";
+        xinm[101]="销售部&nbsp;&nbsp;庞湘云";
+        xinm[102]="销售部&nbsp;&nbsp;石多娇";
+        xinm[103]="销售部&nbsp;&nbsp;倪佳丽";
+        xinm[104]="销售部&nbsp;&nbsp;邢华贞";
+        xinm[105]="销售部&nbsp;&nbsp;周建茹";
+        xinm[106]="销售部&nbsp;&nbsp;孙鸿燕";
+        xinm[107]="客服部&nbsp;&nbsp;齐芳";
+        xinm[108]="客服部&nbsp;&nbsp;张玲玲";
+        xinm[109]="客服部&nbsp;&nbsp;于美玲";
+        xinm[110]="客服部&nbsp;&nbsp;魏媛媛";
+        xinm[111]="客服部&nbsp;&nbsp;李月";
+        xinm[112]="客服部&nbsp;&nbsp;马丽华";
+        xinm[113]="客服部&nbsp;&nbsp;李盛桐";
+        xinm[114]="客服部&nbsp;&nbsp;王玲";
+        xinm[115]="客服部&nbsp;&nbsp;梅凤君";
+        xinm[116]="客服部&nbsp;&nbsp;段娜娜";
+        xinm[117]="客服部&nbsp;&nbsp;冯雪莲";
+        xinm[118]="客服部&nbsp;&nbsp;王然";
+        xinm[119]="客服部&nbsp;&nbsp;武文莉";
+        xinm[120]="客服部&nbsp;&nbsp;严胜芳";
+        xinm[121]="客服部&nbsp;&nbsp;高莆";
+        xinm[122]="客服部&nbsp;&nbsp;邱爽";
+        xinm[123]="客服部&nbsp;&nbsp;史晓宇";
+        xinm[124]="客服部&nbsp;&nbsp;陶立新";
+        xinm[125]="客服部&nbsp;&nbsp;崔维芳";
+        xinm[126]="客服部&nbsp;&nbsp;王玉梅";
+        xinm[127]="客服部&nbsp;&nbsp;曹丽娜";
+        xinm[128]="客服部&nbsp;&nbsp;王志萍";
+        xinm[129]="客服部&nbsp;&nbsp;陈秀";
+        xinm[130]="客服部&nbsp;&nbsp;何俊";
+        xinm[131]="客服部&nbsp;&nbsp;韦金玉";
+        xinm[132]="客服部&nbsp;&nbsp;黄瀚峤";
+        xinm[133]="客服部&nbsp;&nbsp;向淑晶";
+        xinm[134]="中钰&nbsp;&nbsp;任健";
+        xinm[135]="益基&nbsp;&nbsp;周慧君";
+        xinm[136]="益基&nbsp;&nbsp;黄齐";
+        xinm[137]="安蒂康&nbsp;&nbsp;江秀坤";
+        var mobile =new Array();
+        mobile[0] = "13311290296";
+        mobile[1] = "13910168026";
+        mobile[2] = "18601126619";
+        mobile[3] = "13701187599";
+        mobile[4] = "13220101989";
+        mobile[5] = "18500299299";
+        mobile[6] = "18123288035";
+        mobile[7] = "13518196888";
+        mobile[8] = "13681126734";
+        mobile[9] = "15611850493";
+        mobile[10] = "13701282673";
+        mobile[11] = "13671223921";
+        mobile[12] = "13699290327";
+        mobile[13] = "15810721236";
+        mobile[14] = "13910693260";
+        mobile[15] = "15011588086";
+        mobile[16] = "13691514053";
+        mobile[17] = "13466573709";
+        mobile[18] = "15901280700";
+        mobile[19] = "13501192371";
+        mobile[20] = "15521186810";
+        mobile[21] = "13911770989";
+        mobile[22] = "15810721810";
+        mobile[23] = "17710307992";
+        mobile[24] = "13536679042";
+        mobile[25] = "15378664933";
+        mobile[26] = "18600005672";
+        mobile[27] = "17710637758";
+        mobile[28] = "18601296524";
+        mobile[29] = "18310138069";
+        mobile[30] = "18801496199";
+        mobile[31] = "18910659337";
+        mobile[32] = "15801673933";
+        mobile[33] = "18911773480";
+        mobile[34] = "18618425486";
+        mobile[35] = "18310121700";
+        mobile[36] = "18612138362";
+        mobile[37] = "18612138362";
+        mobile[38] = "18600661665";
+        mobile[39] = "13240250271";
+        mobile[40] = "15832573617";
+        mobile[41] = "13661285623";
+        mobile[42] = "13810963381";
+        mobile[43] = "13488834664";
+        mobile[44] = "18210195501";
+        mobile[45] = "13693580862";
+        mobile[46] = "15164800165";
+        mobile[47] = "15810395781";
+        mobile[48] = "13041099455";
+        mobile[49] = "13311298286";
+        mobile[50] = "18439800409";
+        mobile[51] = "15910309851";
+        mobile[52] = "18611517372";
+        mobile[53] = "18722457930";
+        mobile[54] = "15522571815";
+        mobile[55] = "15810430872";
+        mobile[56] = "18500359581";
+        mobile[57] = "17310080730";
+        mobile[58] = "15600800591";
+        mobile[59] = "13552190221";
+        mobile[60] = "18518257268";
+        mobile[61] = "18633265431";
+        mobile[62] = "18518677753";
+        mobile[63] = "13581863287";
+        mobile[64] = "15215314141";
+        mobile[65] = "13942651002";
+        mobile[66] = "15102201055";
+        mobile[67] = "13572588425";
+        mobile[68] = "18628261707";
+        mobile[69] = "13546728753";
+        mobile[70] = "15962340177";
+        mobile[71] = "13405758396";
+        mobile[72] = "18602769670";
+        mobile[73] = "13828418950";
+        mobile[74] = "18925013883";
+        mobile[75] = "13794608339";
+        mobile[76] = "13556444944";
+        mobile[77] = "18618413230";
+        mobile[78] = "13683595653";
+        mobile[79] = "13641111163";
+        mobile[80] = "13356681936";
+        mobile[81] = "13173281588";
+        mobile[82] = "18806321128";
+        mobile[83] = "13731124055";
+        mobile[84] = "15981889301";
+        mobile[85] = "15008497475";
+        mobile[86] = "18623396688";
+        mobile[87] = "13771931814";
+        mobile[88] = "13357826619";
+        mobile[89] = "18505291727";
+        mobile[90] = "13588863117";
+        mobile[91] = "15359899733";
+        mobile[92] = "13787240727";
+        mobile[93] = "13817917445";
+        mobile[94] = "15915701327";
+        mobile[95] = "15989378271";
+        mobile[96] = "13597395002";
+        mobile[97] = "13681152968";
+        mobile[98] = "13241766583";
+        mobile[99] = "18518296001";
+        mobile[100] = "13701083857";
+        mobile[101] = "18602022599";
+        mobile[102] = "15053375518";
+        mobile[103] = "18580796303";
+        mobile[104] = "13915561079";
+        mobile[105] = "13303169896";
+        mobile[106] = "18623772519";
+        mobile[107] = "13693247078";
+        mobile[108] = "18101050618";
+        mobile[109] = "17701359997";
+        mobile[110] = "18618257758";
+        mobile[111] = "13522513930";
+        mobile[112] = "13241735257";
+        mobile[113] = "18701180498";
+        mobile[114] = "13801358815";
+        mobile[115] = "15101664633";
+        mobile[116] = "18210238194";
+        mobile[117] = "13681039885";
+        mobile[118] = "18210257731";
+        mobile[119] = "18911731302";
+        mobile[120] = "13701139881";
+        mobile[121] = "13391858909";
+        mobile[122] = "18301658611";
+        mobile[123] = "13172127001";
+        mobile[124] = "13552317557";
+        mobile[125] = "15510684518";
+        mobile[126] = "13641359830";
+        mobile[127] = "18511266246";
+        mobile[128] = "13269563266";
+        mobile[129] = "13561352528";
+        mobile[130] = "13926406667";
+        mobile[131] = "13667831152";
+        mobile[132] = "13512347595";
+        mobile[133] = "15069758723";
+        mobile[134] = "13716323667";
+        mobile[135] = "15010063688";
+        mobile[136] = "18007177697";
+        mobile[137] = "13608082258";
+        var notTdj = ['15810721236', '13910693260', '13691514053', '17710637758', '18910659337', '18911773480', '13041099455', '18518257268', '18518677753', '18623396688', '18623772519', '18210257731'];
         var tdj=new Array();//特等奖名单
         var ydj=new Array();//一等奖名单
         var edj=new Array();//二等奖名单
         var sdj=new Array();//三等奖名单
         var nametxt = $('#name');
+        var mobiletxt = $('#mobile1');
         var pcount = xinm.length-1;//参加人数
         var mp3 =$("#audio")[0];
         var runing=true;
@@ -299,13 +445,13 @@
                 return false;
             }
             if (sdj.length==8&&edj.length==0){
-                $("#tips").html("二等奖得主");
+                $("#tips").html("二等奖获得者");
                 $("#nameList li").remove();
             }else if (sdj.length==8&&edj.length==5&&ydj.length==0){
-                $("#tips").html("一等奖得主");
+                $("#tips").html("一等奖获得者");
                 $("#nameList li").remove();
             }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj==0){
-                $("#tips").html("特等奖得主");
+                $("#tips").html("特等奖获得者");
                 $("#nameList li").remove();
             }
             if (runing) {
@@ -326,7 +472,7 @@
                 }else {
                     stop();
                 }
-                save(xinm[num]);
+                save(xinm[num],mobile[num]);
                 if (sdj.length==8&&edj.length==0){
                         layer.alert("该抽二等奖啦");
                 }else if (sdj.length==8&&edj.length==5&&ydj.length==0){
@@ -337,26 +483,27 @@
                 }
             }
         });
-        function save(name) {
+        function save(name,mo) {
             var removeItem =name;
+            var removeMobile =mo;
             xinm = $.grep(xinm, function(value) {
                 return value != removeItem;
+            });
+            mobile = $.grep(mobile, function(value) {
+                return value != removeMobile;
             });
             localStorage.setItem("tdj",tdj);
             if(sdj.length<8){
                 sdj.push(name);
-                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
+
             }else if (sdj.length==8&&edj.length<5){
                 edj.push(name);
-                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }else if (sdj.length==8&&edj.length==5&&ydj.length<3){
                 ydj.push(name);
-                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }else if (sdj.length==8&&edj.length==5&&ydj.length==3&&tdj<1){
                 tdj.push(name);
-                $("#nameList").append("<li style='color: #000000'>"+name+"</li>")
             }
-
+            $("#nameList").append("<li style='color: #000000'>"+name+"&nbsp;&nbsp;"+mo+"</li>")
         }
         Array.prototype.in_array = function(e)
         {
@@ -371,11 +518,12 @@
             mp3.play();
             num =randomNum();
             nametxt.html(xinm[num]);
+            mobiletxt.html(mobile[num]);
             m=setTimeout(startNumT,0);
         }
         function randomNum() {
             var k = Math.floor(Math.random() * pcount);
-            if(notTdj.in_array(xinm[k])){
+            if(notTdj.in_array(mobile[k])){
                return randomNum();
             }else {
                 return k;
@@ -392,6 +540,7 @@
             mp3.play();
             num = Math.floor(Math.random() * pcount);
             nametxt.html(xinm[num]);
+            mobiletxt.html(mobile[num]);
             t = setTimeout(startNum, 0);
         }
 //停止跳动
