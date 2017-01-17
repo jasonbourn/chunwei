@@ -437,8 +437,14 @@
 
 
         $('#tdj').click(function () {
-            $("#tips").html("特等奖获得者");
-            $("#nameList li").remove();
+            if (tdj.length==0){
+                $("#tips").html("特等奖获得者");
+                $("#nameList li").remove();
+            }
+            if(tdj.length==1){
+                layer.alert("特等奖抽完啦");
+                return false;
+            }
             if (runing) {
                 runing = false;
                 $(this).html('停止');
