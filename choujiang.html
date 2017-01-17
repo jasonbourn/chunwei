@@ -475,11 +475,11 @@
             if (runing) {
                 runing = false;
                 $(this).html('停止');
-                startNumT();
+                startNum();
             } else {
                 runing = true;
                 $(this).html('二等奖');
-                stopT();
+                stop();
                 save(xinm[num],mobile[num],"e");
             }
         });
@@ -491,11 +491,11 @@
             if (runing) {
                 runing = false;
                 $(this).html('停止');
-                startNumT();
+                startNum();
             } else {
                 runing = true;
                 $(this).html('一等奖');
-                stopT();
+                stop();
                 save(xinm[num],mobile[num],"y");
             }
         });
