@@ -441,10 +441,6 @@
                 $("#tips").html("特等奖获得者");
                 $("#nameList li").remove();
             }
-            if(tdj.length==1){
-                layer.alert("特等奖抽完啦");
-                return false;
-            }
             if (runing) {
                 runing = false;
                 $(this).html('停止');
@@ -459,10 +455,6 @@
         $('#sdj').click(function () {
             if (sdj.length==0){
                 $("#nameList li").remove();
-            }
-            if(sdj.length==8){
-                layer.alert("三等奖抽完啦");
-                return false;
             }
             if (runing) {
                 runing = false;
@@ -480,10 +472,6 @@
                 $("#tips").html("二等奖获得者");
                 $("#nameList li").remove();
             }
-            if(edj.length==5){
-                layer.alert("二等奖抽完啦");
-                return false;
-            }
             if (runing) {
                 runing = false;
                 $(this).html('停止');
@@ -499,10 +487,6 @@
             if (ydj.length==0){
                 $("#tips").html("一等奖获得者");
                 $("#nameList li").remove();
-            }
-            if(ydj.length==3){
-                layer.alert("一等奖抽完啦");
-                return false;
             }
             if (runing) {
                 runing = false;
